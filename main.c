@@ -44,8 +44,9 @@ No* insereArv(No*raiz,int n){
         else{
             printf("Não foi possivel inserir\n");
         }
+        return raiz;
     }
-    return raiz;
+    
 }
 
 
