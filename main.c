@@ -11,7 +11,8 @@ completa ou cheia).
 
 typedef struct no{
     int valor;
-    struct no* esquerda,direita;
+    struct no* esquerda;
+    struct no* direita;
 }No;
 
 No* criaNo(int n){
@@ -46,12 +47,45 @@ No* insereArv(No*raiz,int n){
         }
         return raiz;
     }
-    
+}
+
+/*
+2) Escrever os algoritmos para percorrer uma árvore binária em pré-ordem, pós-ordem e
+ordem simétrica
+*/
+
+void print_pre_order(No*raiz){
+    if(raiz!=NULL){
+        printf("Valor = %d\n",raiz->valor);
+        print_pre_order(raiz->esquerda);
+        print_pre_order(raiz->direita);
+    }
+}
+
+void print_order(No*raiz){
+    if(raiz!=NULL){
+        print_order(raiz->esquerda);
+        printf("Valor = %d\n",raiz->valor);
+        print_order(raiz->direita);
+    }
+}
+
+void print_post_order(No*raiz){
+    if(raiz!=NULL){
+
+        print_post_order(raiz->esquerda);
+        print_post_order(raiz->direita);
+        printf("Valor = %d\n",raiz->valor);
+    }
 }
 
 
-
 int main(void){
-
+    No* arvore=NULL;
+    arvore = insereArv(arvore,50);
+    arvore = insereArv(arvore,100);
+    arvore = insereArv(arvore,40);
+    arvore = insereArv(arvore,120);
+    // print_post_order(arvore);
     return 0;
 }
