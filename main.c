@@ -79,13 +79,38 @@ void print_post_order(No*raiz){
     }
 }
 
+/*
+Escrever algoritmo para verificar se existe nó com uma dada chave na árvore (busca),
+retornar o ponteiro para o nó que contenha a chave dada. 
+*/
+
+No* busca(No*raiz,int n){
+    if(raiz!=NULL){
+        if(raiz->valor==n){
+            return raiz;
+        }
+        else{
+            if (n<raiz->valor){
+                raiz=busca(raiz->esquerda,n);
+            }
+            else{
+                raiz=busca(raiz->direita,n);
+            }
+            return raiz;
+        }
+    }
+}
+
 
 int main(void){
     No* arvore=NULL;
-    arvore = insereArv(arvore,50);
-    arvore = insereArv(arvore,100);
     arvore = insereArv(arvore,40);
+    arvore = insereArv(arvore,50);
     arvore = insereArv(arvore,120);
-    // print_post_order(arvore);
+    arvore = insereArv(arvore,100);
+    No* buscado=NULL;
+    buscado=busca(arvore,120);
+    //print_order(buscado);
+    //print_order(arvore);
     return 0;
 }
