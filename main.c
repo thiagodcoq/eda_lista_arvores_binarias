@@ -98,6 +98,9 @@ No* busca(No*raiz,int n){
             }
         }
     }
+    else{
+        printf("Nao existe o valor na arvore\n");
+    }
 }
 
 
@@ -108,8 +111,8 @@ int main(void){
     arvore = insereArv(arvore,120);
     arvore = insereArv(arvore,100);
     No* buscado=NULL;
-    buscado=busca(arvore,120);
-    //print_order(buscado);
+    buscado=busca(arvore,10);
+    // print_order(buscado);
     //print_order(arvore);
     return 0;
 }
