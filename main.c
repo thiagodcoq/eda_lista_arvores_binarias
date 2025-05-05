@@ -91,12 +91,11 @@ No* busca(No*raiz,int n){
         }
         else{
             if (n<raiz->valor){
-                raiz=busca(raiz->esquerda,n);
+                return busca(raiz->esquerda,n);
             }
             else{
-                raiz=busca(raiz->direita,n);
+                return busca(raiz->direita,n);
             }
-            return raiz;
         }
     }
 }
