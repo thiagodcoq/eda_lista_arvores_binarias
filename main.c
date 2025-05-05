@@ -15,6 +15,13 @@ typedef struct no{
     struct no* direita;
 }No;
 
+typedef struct filho{
+    int valor;
+    struct filho*esquerda;
+    struct filho*direita;
+    struct filho* pai;
+}Filho;
+
 No* criaNo(int n){
     No*novo=(No*)malloc(sizeof(No));
     if (novo==NULL){
@@ -102,6 +109,39 @@ No* busca(No*raiz,int n){
         printf("Nao existe o valor na arvore\n");
     }
 }
+
+
+/*
+Escrever algoritmo que crie uma árvore binária e que cada nó indique o seu pai,
+armazenando no nó um ponteiro para o nó pai.
+*/
+
+Filho* cria(Filho*pai,int n){
+    Filho*novo=(Filho*)malloc(sizeof(Filho));
+    if (novo!=NULL){
+        novo->valor=n;
+        novo->direita=NULL;
+        novo->esquerda=NULL;
+        novo->pai=pai;
+        return novo;
+    }
+}
+
+Filho* insere(Filho*pai,Filho*raiz,int n){
+    if(raiz==NULL){
+        raiz=cria(pai,n);
+        return raiz;
+    }
+    else{
+        if(n<raiz->valor){
+            raiz->esquerda=insere(raiz,raiz->esquerda,n);
+        }
+        else if(n>raiz->valor){
+            raiz->direita=insere(raiz,raiz->direita,n);
+        }
+    }
+}
+
 
 
 int main(void){
